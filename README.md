@@ -3,3 +3,4 @@ The aim of this project is to simplify data retrieval from Excel Sheets using RA
 
 ## References 
 1. <a href="https://blog.langchain.dev/summarizing-and-querying-data-from-excel-spreadsheets-using-eparse-and-a-large-language-model/">LangChain's Blogpost on Retrieval from Excel Sheet</a>
+2. <a href="https://www.youtube.com/watch?v=xQ3mZhw69bc&ab_channel=SamWitteveen">This YouTube Video explaining how to use it</a>
