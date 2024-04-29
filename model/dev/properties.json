@@ -1,0 +1,5 @@
+{
+    "huggingface_model_name": "mistralai/Mistral-7B-Instruct-v0.2",
+    "embedding_model_name": "thenlper/gte-small", 
+    "api_key": "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"
+}
