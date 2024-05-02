@@ -13,9 +13,11 @@ The repo structure is based on a standard template for production ML projects [3
 
 <b>Notebooks</b>: Typically used for data analysis and exploration. Since we are dealing with LLMs, I decided to add my understanding of different concepts to the notebooks here. 
 <b>Model</b>: Contains the python file that preps and invokes the LLM. 
-<b>>API</b>: Contains the flask file which exposes the endpoint to make a simple call to the LLM. 
+<b>>API</b>: Contains the flask file which exposes the endpoint to make a simple call to the LLM. Following are the endpoints exposed so far 
+    - "/" - home page which just says "Welcome to Sheet Simplify!"
+    - "/summary/v1" - which provides a summary of the data provided as per the LLM 
 
-There are several other folders which were not relevant to this case and hence have been omitted. 
+There are several other folders from the original template which were not relevant to this case and hence have been omitted. 
 
 # Milestones to achieve
 Since the project is ongoing, I would like to include what I am currently working on with LLMs. 

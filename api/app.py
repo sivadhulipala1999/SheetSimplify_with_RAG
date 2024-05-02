@@ -2,7 +2,7 @@
 import os
 
 from flask import Flask, request, jsonify
-from ..model import llm
+from model import llm
 
 os.environ["CUDA_VISIBLE_DEVICES"] = ""  # Do not use GPU
 

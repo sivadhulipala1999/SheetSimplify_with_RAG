@@ -109,8 +109,9 @@ def main(environment_name, API_CALL=False):
     agent = prep_llm_chain(model_name, prompt_template, retriever)
 
     if API_CALL:
+        # any changes made here would reflect in app.py only after a pip install . of the whole project
         summary_question = "Give me a summary of the data provided"
-        return agent.invoke(summary_question)
+        return agent.invoke(summary_question).split("assistant")[1]
 
     chat(agent)
 
