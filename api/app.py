@@ -12,7 +12,7 @@ app = Flask(__name__)
 @app.route("/")
 def index():
     """Provide simple health check route."""
-    return "Hello, world!"
+    return "Welcome to Sheet Simplify!"
 
 
 @app.route("/v1/summary", methods=["GET", "POST"])
