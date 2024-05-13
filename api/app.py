@@ -18,7 +18,9 @@ def index():
 @app.route("/v1/summary", methods=["GET", "POST"])
 def summary():
     """Provide a summary of the data provided. Responds to both GET and POST requests."""
-    return llm.main("dev", API_CALL=True)
+    summary_question = "Give me a summary of the data provided"
+    llm_chain = llm.setup("dev")
+    return llm_chain.invoke(summary_question).split("assistant")[1]
 
 
 def main():

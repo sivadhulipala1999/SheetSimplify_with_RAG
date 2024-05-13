@@ -16,6 +16,7 @@ The repo structure is based on a standard template for production ML projects [3
 <b>API</b>: Contains the flask file which exposes the endpoint to make a simple call to the LLM. Following are the endpoints exposed so far <br/> 
     &emsp;&emsp;- "/" - home page which just says "Welcome to Sheet Simplify!" <br/>
     &emsp;&emsp;- "/summary/v1" - which provides a summary of the data provided as per the LLM  <br/>
+<b>streamlit</b>: Contains the code to setup the streamlit app. Not in  the original template. 
 
 There are several other folders from the original template which were not relevant to this case and hence have been omitted. 
 

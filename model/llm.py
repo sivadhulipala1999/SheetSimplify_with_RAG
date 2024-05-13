@@ -27,14 +27,15 @@ def prep_llm_chain(repo_id, prompt, retriever):
     return agent_executor
 
 
-def chat(agent):
+def chat(llm):
+    """Initiates a chat with the LLM via the command. Run this script directly via command line for this."""
     print("> Chat with the Sheet_Simplify. Please enter your queries here. Press 'quit' to stop the chat")
     while True:
         user_input = input("> ")
         if user_input == "quit":
             break
         else:
-            print("Sheet Simplify: ", agent.invoke(
+            print("Sheet Simplify: ", llm.invoke(
                 user_input).split("assistant")[1])
 
 
@@ -75,7 +76,7 @@ def prep_rag_prompt():
 
 
 def prep_vectorstore_csv(filepath, embedding_model_name):
-    """Take the CSV data and load it into the FAISS vector store using HuggingFace embeddings"""
+    """Takes the CSV data and loads it into the FAISS vector store using HuggingFace embeddings"""
     loader = CSVLoader(file_path=filepath, encoding="utf-8", csv_args={
         'delimiter': ','})
     data = loader.load()
@@ -88,13 +89,16 @@ def prep_vectorstore_csv(filepath, embedding_model_name):
     return vectorstore.as_retriever()
 
 
-def main(environment_name, API_CALL=False):
-    # Read the properties from the JSON file of the environment
+def setup(environment_name, user_api_key=None):
+    """Setup the LLM Chain for further usage from API or Streamlit app"""
     with open(f"model/{environment_name}/properties.json") as f:
         json_contents = f.read()
     env_data = json.loads(json_contents)
 
-    os.environ["HUGGINGFACEHUB_API_TOKEN"] = env_data["api_key"]
+    if user_api_key is None:
+        os.environ["HUGGINGFACEHUB_API_TOKEN"] = env_data["api_key"]
+    else:
+        os.environ["HUGGINGFACEHUB_API_TOKEN"] = user_api_key
     model_name = env_data["huggingface_model_name"]
     embedding_model_name = env_data["embedding_model_name"]
 
@@ -106,14 +110,14 @@ def main(environment_name, API_CALL=False):
     prompt_template = prep_rag_prompt()
 
     # prep the LLM Agent
-    agent = prep_llm_chain(model_name, prompt_template, retriever)
+    llm_chain = prep_llm_chain(model_name, prompt_template, retriever)
 
-    if API_CALL:
-        # any changes made here would reflect in app.py only after a pip install . of the whole project
-        summary_question = "Give me a summary of the data provided"
-        return agent.invoke(summary_question).split("assistant")[1]
+    return llm_chain
 
-    chat(agent)
+
+def main(environment_name, user_api_key=None, API_CALL=False, APP_INVOKE=False):
+    llm_chain = setup(environment_name, user_api_key)
+    chat(llm_chain)
 
 
 if __name__ == "__main__":
