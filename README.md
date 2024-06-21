@@ -33,10 +33,6 @@ There are several other folders from the original template which were not releva
    This initiates the flask server in localhost. Remember, you would have to add the endpoint /v1/summary to the URL in the browser to hit the endpoint.
    Of course, you can also hit these endpoints from other API tools like Postman. 
 
-# Milestones to achieve
-Since the project is ongoing, I would like to include what I am currently working on with LLMs. 
-- Production Ready: I would like to utilize MLFlow for this case, if sensible. Exploration in this case is ongoing. 
-
 ## References 
 1. <a href="https://blog.langchain.dev/summarizing-and-querying-data-from-excel-spreadsheets-using-eparse-and-a-large-language-model/">LangChain's Blogpost on Retrieval from Excel Sheet</a>
 2. <a href="https://www.youtube.com/watch?v=xQ3mZhw69bc&ab_channel=SamWitteveen">This YouTube Video explaining how to use it</a>
