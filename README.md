@@ -25,11 +25,12 @@ There are several other folders from the original template which were not releva
                <code>pip install .</code>
 2. Regardless of the script you want to run, it is very important to execute it from the root directory. For example, you would run the llm.py file as follows from the root directory 
                <code>python -m model/llm.py</code>
+   This prepares the model and starts the chat in command line. 
 3. For the streamlit app, run the following command
                <code>streamlit run streamlit/streamlit_app.py</code>
-   This initiates the streamlit web app frontend in the localhost
+   This initiates the streamlit web app frontend in the localhost.
 4. You can also execute the flask app to hit the API endpoints using the command
-                <code>python =m api/app.py</code>
+                <code>python -m api/app.py</code>
    This initiates the flask server in localhost. Remember, you would have to add the endpoint /v1/summary to the URL in the browser to hit the endpoint.
    Of course, you can also hit these endpoints from other API tools like Postman. 
 
